@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <dashboard></dashboard>
-    <additional-box></additional-box>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <dashboard></dashboard>
+    </div>
+    <div>
+      <additional-box></additional-box>
+    </div>
     <login-list></login-list>
   </div>
 </template>
