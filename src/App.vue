@@ -1,20 +1,26 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <dashboard></dashboard>
+    <additional-box></additional-box>
+    <login-list></login-list>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<script>
+import Dashboard from './components/Dashboard.vue';
+import AdditionalBox from './components/AdditionalBox.vue';
+import LoginList from './components/LoginList.vue';
+
+export default {
+  components: {
+    Dashboard,
+    AdditionalBox,
+    LoginList,
+  },
+};
+</script>
+
+<style>
 .logo {
   height: 6em;
   padding: 1.5em;
