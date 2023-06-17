@@ -13,7 +13,7 @@ export default {
             required: true,
         },
         data: {
-            type: String, // o il tipo di dato appropriato per i tuoi dati
+            type: Number,
             required: true,
         },
     },
