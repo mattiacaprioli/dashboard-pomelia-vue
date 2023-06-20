@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
   async fetchData() {
     try {
-      const response = await axios.get('../../solar-panels.json');
+      const response = await axios.get('../../src/solar-panels.json');
       return response.data;
     } catch (error) {
       console.error(error);
