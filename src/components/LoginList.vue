@@ -11,6 +11,8 @@
 
 <script>
 import LoginItem from './LoginItem.vue';
+import dataService from '../services/dataService';
+import axios from 'axios';
 
 export default {
   components: {
@@ -23,32 +25,22 @@ export default {
   },
   methods: {
     fetchLogins() {
-      // Effettua la chiamata API per ottenere i dati dei login più recenti
-      // e aggiorna la variabile logins con i dati ricevuti
-      // Esempio:
-      // axios.get('/api/logins')
-      //   .then(response => {
-      //     this.logins = response.data;
-      //   })
-      //   .catch(error => {
-      //     console.error(error);
-      //   });
-
-      // Esempio di dati di login da utilizzare durante lo sviluppo:
-      this.logins = [
-        { id: 1, username: 'user1', timestamp: '2023-06-01 10:30:00' },
-        { id: 2, username: 'user2', timestamp: '2023-06-02 15:45:00' },
-        { id: 3, username: 'user3', timestamp: '2023-06-03 09:15:00' },
-        // ...
-      ];
+      // Effettua la chiamata API per ottenere i dati dei login dal file JSON
+      axios.get('../../solar-panels.json')
+        .then(response => {
+          this.logins = response.data.logs;
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
     addLogin(loginData) {
       // Aggiunge un nuovo login alla lista degli ultimi login
       // Utilizza i dati del nuovo login per creare un oggetto da inserire nella lista
       const newLogin = {
-        id: loginData.id,
-        username: loginData.username,
-        timestamp: loginData.timestamp
+        date: loginData.date,
+        text: loginData.text,
+        type: loginData.type
       };
 
       // Aggiungi il nuovo login all'inizio dell'array logins
@@ -61,9 +53,9 @@ export default {
     // Esempio di aggiunta di un nuovo login dopo 5 secondi (simulazione di un login effettuato)
     setTimeout(() => {
       const newLoginData = {
-        id: 4,
-        username: 'user4',
-        timestamp: '2023-06-03 11:30:00'
+        date: '2023-06-03 11:30:00',
+        text: 'utente aggiunto',
+        type: 'info'
       };
       this.addLogin(newLoginData);
     }, 5000);
@@ -76,10 +68,4 @@ export default {
   margin-top: 2rem;
 }
 </style>
-  
-  
-  
-  
-  
-  
   

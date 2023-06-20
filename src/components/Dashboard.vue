@@ -8,7 +8,6 @@
   
 <script>
 import Box from './Box.vue';
-import axios from 'axios';
 import dataService from '../services/dataService'
   
 export default {
