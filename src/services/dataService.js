@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 export default {
-  fetchData() {
-    return axios.get('../../solar-panels.json')
-      .then(response => response.data)
-      .catch(error => {
-        console.error(error);
-        throw error;
-      });
-  },
+  async fetchData() {
+    try {
+      const response = await axios.get('../../solar-panels.json');
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Errore durante il recupero dei dati.');
+    }
+  }
 }
