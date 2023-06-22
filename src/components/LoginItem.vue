@@ -1,7 +1,7 @@
 <template>
     <li class="mb-2 flex items-center">
       <span class="font-medium mr-2">{{ login.date }}</span>
-      <span class="text-gray-500">- {{ login.text }}</span>
+      <span class="text-gray-400">- {{ login.text }}</span>
     </li>
   </template>
   

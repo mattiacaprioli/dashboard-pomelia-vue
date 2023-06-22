@@ -43,17 +43,27 @@ export default {
     }
   },
   mounted() {
-    this.fetchLogins();
+  this.fetchLogins();
 
-    setTimeout(() => {
-      const newLoginData = {
-        date: '2023-06-03 11:30:00',
-        text: 'utente aggiunto',
-        type: 'info'
-      };
-      this.addLogin(newLoginData);
-    }, 5000);
-  }
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+  setTimeout(() => {
+    const newLoginData = {
+      date: formattedDate,
+      text: 'Last login',
+      type: 'info'
+    };
+    this.addLogin(newLoginData);
+  }, 5000);
+}
 };
 </script>
 

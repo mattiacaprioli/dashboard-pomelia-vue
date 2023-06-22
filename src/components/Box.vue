@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box bg-[#303134] border rounded-sm border-gray-500 p-6">
     <h3>{{ title }}</h3>
     <p>{{ data }}</p>
   </div>
@@ -21,9 +21,5 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 10px;
-}
+
 </style>

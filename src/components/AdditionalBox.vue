@@ -1,14 +1,18 @@
 <template>
-  <div class="additional-box bg-slate-900">
-    <div class="mr-2">
-      <i :class="weatherIcon"></i>
+  <div class="additional-box bg-gray-700 mt-5 flex flex-col md:flex-row md:items-center md:justify-between">
+    <div class="flex items-center md:mr-6">
+      <div class="mr-6">
+        <i :class="['material-icons', 'text-5xl', weatherIcon]"></i>
+      </div>
+      <div class="flex flex-col">
+        <h2 class="text-xl font-bold mb-1">{{ temperature }}°C</h2>
+        <p>{{ city }}</p>
+        <div class="flex items-center">
+          <p class="text-lg font-medium">{{ description }}</p>
+        </div>
+      </div>
     </div>
-    <h2 class="text-xl font-bold mb-1">{{ temperature }}°C</h2>
-    <p>{{ city }}</p>
-    <div class="flex items-center">
-      <p class="text-lg font-medium">{{ description }}</p>
-    </div>
-    <div class="counter-container">
+    <div class="counter-container mt-4 md:mt-0">
       <div v-for="digit in formattedCounter" :key="digit" class="text-2xl font-bold bg-gray-300 text-gray-800 p-2 m-1 rounded">
         {{ digit }}
       </div>

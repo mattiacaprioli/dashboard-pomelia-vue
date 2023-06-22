@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard grid grid-cols-2 gap-4">
+  <div class="dashboard grid grid-cols-2 gap-4 mb-4">
     <div v-for="(item, index) in boxData" :key="index" class="col-span-1">
       <box :title="item.title" :data="item.data" />
     </div>
