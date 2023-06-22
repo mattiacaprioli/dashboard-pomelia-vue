@@ -1,12 +1,22 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <dashboard></dashboard>
+  <div class="flex flex-col">
+    <header class="flex items-center h-24 mb-10">
+      <img class="logo h-72 w-auto ml-4" src="./assets/images/logoPomelia.png" alt="Logo Pomelia" />
+    </header>
+    <div class="flex flex-col md:flex-row md:gap-4">
+      <div class="w-full md:w-1/2">
+        <dashboard />
+      </div>
+      <div class="w-full md:w-1/2">
+        <additional-box />
+      </div>
     </div>
-    <div>
-      <additional-box></additional-box>
+    <div class="w-full mt-4 flex justify-center">
+      <login-list />
     </div>
-    <login-list></login-list>
+    <footer class="flex items-center justify-center h-16 bg-gray-800 mt-5">
+      <p class="text-gray-600">Created by Mattia Caprioli</p>
+    </footer>
   </div>
 </template>
 
@@ -25,16 +35,5 @@ export default {
 </script>
 
 <style>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
