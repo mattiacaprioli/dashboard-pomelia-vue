@@ -34,7 +34,7 @@ export default {
     };
   },
   mounted() {
-    const geoApiUrl = 'http://api.openweathermap.org/geo/1.0/direct';
+    const geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct';
     const cityName = 'Rome';
 
     axios
