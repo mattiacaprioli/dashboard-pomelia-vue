@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="counter-container mt-4 md:mt-0">
-      <div v-for="digit in formattedCounter" :key="digit" class="text-2xl font-bold bg-gray-300 text-gray-800 p-2 m-1 rounded">
+      <div v-for="(digit, index) in formattedCounter" :key="index" class="text-2xl font-bold bg-gray-300 text-gray-800 p-2 m-1 rounded">
         {{ digit }}
       </div>
     </div>
