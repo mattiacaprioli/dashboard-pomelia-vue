@@ -1,5 +1,5 @@
 <template>
-  <div class="additional-box bg-gray-700 mt-5 flex flex-col md:flex-row md:items-center md:justify-between">
+  <div class="additional-box bg-gray-700 rounded-sm mt-5 flex flex-col md:flex-row md:items-center md:justify-between md:h-40 mr-4">
     <div class="flex items-center md:mr-6">
       <div class="mr-6">
         <i :class="['material-icons', 'text-5xl', weatherIcon]"></i>
@@ -29,33 +29,50 @@ export default {
       temperature: null,
       city: null,
       description: null,
-      counter: 2344
+      counter: 2344,
+      apiKey: '0810cbb33e9936a014b1a42cd7b95205'
     };
   },
   mounted() {
-    const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
-    const latitude = 41.9028;
-    const longitude = 12.4964;
-    const apiKey = '0810cbb33e9936a014b1a42cd7b95205';
+    const geoApiUrl = 'http://api.openweathermap.org/geo/1.0/direct';
+    const cityName = 'Rome';
 
     axios
-      .get(apiUrl, {
+      .get(geoApiUrl, {
         params: {
-          lat: latitude,
-          lon: longitude,
-          appid: apiKey,
-          units: 'metric'
+          q: cityName,
+          limit: 1,
+          appid: this.apiKey
         }
       })
       .then(response => {
-        this.temperature = response.data.main.temp;
-        this.city = response.data.name;
-        this.description = response.data.weather[0].description;
+        const latitude = response.data[0].lat;
+        const longitude = response.data[0].lon;
 
-        // Avvia il conteggio del contatore ogni secondo
-        setInterval(() => {
-          this.counter += 1;
-        }, 1000);
+        const weatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+
+        axios
+          .get(weatherApiUrl, {
+            params: {
+              lat: latitude,
+              lon: longitude,
+              appid: this.apiKey,
+              units: 'metric'
+            }
+          })
+          .then(response => {
+            this.temperature = response.data.main.temp;
+            this.city = response.data.name;
+            this.description = response.data.weather[0].description;
+
+            // Avvia il conteggio del contatore ogni secondo
+            setInterval(() => {
+              this.counter += 1;
+            }, 1000);
+          })
+          .catch(error => {
+            console.error(error);
+          });
       })
       .catch(error => {
         console.error(error);
@@ -86,7 +103,6 @@ export default {
 .additional-box {
   padding: 1rem;
   border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
 }
 
 .counter-container {
