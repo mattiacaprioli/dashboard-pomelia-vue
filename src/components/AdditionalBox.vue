@@ -34,8 +34,8 @@ export default {
   },
   mounted() {
     const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
-    const latitude = 41.902783;
-    const longitude = 12.496365;
+    const latitude = 41.9028;
+    const longitude = 12.4964;
     const apiKey = '0810cbb33e9936a014b1a42cd7b95205';
 
     axios
