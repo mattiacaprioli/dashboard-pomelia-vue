@@ -1,5 +1,5 @@
 <template>
-  <div class="additional-box bg-gray-700 rounded-sm mt-5 flex flex-col md:flex-row md:items-center md:justify-between md:h-40 mr-4">
+  <div class="additional-box bg-gray-700 rounded-sm mt-5 flex flex-col md:flex-row md:items-center md:justify-between md:h-40 mr-4 ml-4">
     <div class="flex items-center md:mr-6">
       <div class="mr-6">
         <i :class="['material-icons', 'text-5xl', weatherIcon]"></i>

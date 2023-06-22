@@ -1,5 +1,5 @@
 <template>
-    <div class="login-list">
+    <div class="mt-8 ml-4 mr-4">
         <h2 class="text-xl font-bold mb-4">Ultimi Login</h2>
         <ul>
             <li>
@@ -68,8 +68,5 @@ export default {
 </script>
 
 <style>
-.login-list {
-  margin-top: 2rem;
-}
 </style>
   
