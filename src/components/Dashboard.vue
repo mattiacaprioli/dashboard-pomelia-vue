@@ -8,11 +8,11 @@
   
 <script>
 import Box from './Box.vue';
-import axios from 'axios';
-
+import dataService from '../services/dataService'
+  
 export default {
   components: {
-    Box,
+      Box,
   },
   data() {
     return {
@@ -30,16 +30,11 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get('../../src/solar-panels.json')
-        .then(response => {
-          const data = response.data;
+      dataService.fetchData()
+        .then(data => {
           this.boxData.forEach((item, index) => {
             item.data = data[item.title];
           });
-        })
-        .catch(error => {
-          console.error(error);
-          throw new Error('Errore durante il recupero dei dati.');
         });
     },
   },
