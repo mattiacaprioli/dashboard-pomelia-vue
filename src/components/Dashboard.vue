@@ -5,14 +5,14 @@
     </div>
   </div>
 </template>
-  
+
 <script>
 import Box from './Box.vue';
-import dataService from '../services/dataService'
-  
+import axios from 'axios';
+
 export default {
   components: {
-      Box,
+    Box,
   },
   data() {
     return {
@@ -25,16 +25,31 @@ export default {
     };
   },
   mounted() {
-    // Effettua la richiesta dei dati localmente dal file JSON
     this.fetchData();
+
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   },
   methods: {
     fetchData() {
-      dataService.fetchData()
-        .then(data => {
-          this.boxData.forEach((item, index) => {
+      axios
+        .get('https://raw.githubusercontent.com/ott-fogliata/vuejs-s2i-repository/master/solar-panels.json')
+        .then(response => {
+          const data = response.data;
+          this.boxData.forEach(item => {
             item.data = data[item.title];
           });
+        })
+        .catch(error => {
+          console.error(error);
+          // Gestisci l'errore se la richiesta fallisce
         });
     },
   },
