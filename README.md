@@ -12,7 +12,7 @@ Globalmente, il sito offre un'esperienza intuitiva, consentendo agli utenti di i
 
 ## Link deploy dell'app con netlify
 
-link: https://github.com/mattiacaprioli/dashboard-pomelia-vue
+link: https://dashboard-pomelia.netlify.app/
 
 ## Screenshot
 
