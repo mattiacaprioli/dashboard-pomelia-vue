@@ -1,6 +1,6 @@
 <template>
   <div class="mt-8 ml-4 mr-4">
-    <h2 class="text-xl font-bold mb-4">Ultimi Login</h2>
+    <h2 class="text-xl font-bold mb-4">Logs</h2>
     <ul>
       <li>
         <login-item v-for="login in logins" :key="login.date" :login="login"></login-item>
@@ -19,12 +19,14 @@ export default {
   },
   data() {
     return {
+      // Array per i dati dei login e variabile per gli errori
       logins: [],
       error: null,
     };
   },
   methods: {
     async fetchData() {
+      // Effettua la richiesta per ottenere i dati dei login
       try {
         const response = await axios.get('https://raw.githubusercontent.com/ott-fogliata/vuejs-s2i-repository/master/solar-panels.json');
         this.logins = response.data.logs;
@@ -34,6 +36,7 @@ export default {
       }
     },
     addLogin(loginData) {
+      // Aggiunge un nuovo oggetto login all'inizio dell'array
       const newLogin = {
         date: loginData.date,
         text: loginData.text,
@@ -45,6 +48,7 @@ export default {
   mounted() {
     this.fetchData();
 
+    // Ottiene la data corrente e formatta la data corrente come "YYYY-MM-DD HH:MM:SS"
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -55,6 +59,7 @@ export default {
 
     const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
+    // Aggiunge un nuovo oggetto login dopo 5 secondi
     setTimeout(() => {
       const newLoginData = {
         date: formattedDate,

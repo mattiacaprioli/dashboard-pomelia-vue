@@ -1,5 +1,6 @@
 <template>
-  <div class="additional-box bg-gray-700 rounded-sm mt-5 flex flex-col md:flex-row md:items-center md:justify-between md:h-40 mr-4 ml-4">
+  <div class="p-4 border border-gray-200 bg-gray-700 rounded-sm mt-5 flex flex-col md:flex-row md:items-center md:justify-between md:h-40 mr-4 ml-4">
+    <!-- Sezione delle informazioni meteo -->
     <div class="flex items-center md:mr-6">
       <div class="mr-6">
         <i :class="['material-icons', 'text-5xl', weatherIcon]"></i>
@@ -12,7 +13,8 @@
         </div>
       </div>
     </div>
-    <div class="counter-container mt-4 md:mt-0">
+    <!-- Sezione del contatore -->
+    <div class="flex justify-center items-center mt-4 md:mt-0">
       <div v-for="(digit, index) in formattedCounter" :key="index" class="text-2xl font-bold bg-gray-300 text-gray-800 p-2 m-1 rounded">
         {{ digit }}
       </div>
@@ -26,6 +28,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      // Variabili per le informazioni meteo e il contatore
       temperature: null,
       city: null,
       description: null,
@@ -34,6 +37,7 @@ export default {
     };
   },
   mounted() {
+    // Effettua la richiesta per ottenere le coordinate geografiche della città
     const geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct';
     const cityName = 'Rome';
 
@@ -49,6 +53,7 @@ export default {
         const latitude = response.data[0].lat;
         const longitude = response.data[0].lon;
 
+        // Effettua la richiesta per ottenere i dati meteorologici della città
         const weatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
         axios
@@ -100,15 +105,4 @@ export default {
 </script>
 
 <style>
-.additional-box {
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-}
-
-.counter-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-}
 </style>
